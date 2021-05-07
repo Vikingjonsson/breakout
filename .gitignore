@@ -1,0 +1,11 @@
+# packages
+*.zip
+*.love
+
+# builds
+/builds
+/releases
+
+# dev
+/api
+/lib
