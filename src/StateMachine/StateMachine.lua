@@ -1,10 +1,10 @@
 local Class = require 'lib.hump.class'
 
----@class StateMachine
+--- @class StateMachine
 local StateMachine = Class {}
 
----StateMachine constructor
----@param states table<string, function> table containting game states and state functions
+--- StateMachine constructor
+--- @param states table<string, function> table containting game states and state functions
 function StateMachine:init(states)
   self.empty = {
     enter = function(...)
@@ -22,8 +22,8 @@ function StateMachine:init(states)
   self.current_state_name = ''
 end
 
----Returns the current currently active state
----@return string state name
+--- Returns the current currently active state
+--- @return string state name
 function StateMachine:get_current_state()
   return self.current_state_name
 end

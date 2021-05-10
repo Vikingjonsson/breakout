@@ -1,13 +1,13 @@
 local Class = require 'lib.hump.class'
 
----@class BaseState
+--- @class BaseState
 local BaseState = Class {}
 
----State construtor
+--- State construtor
 function BaseState:init()
 end
 
----Enter state
+--- Enter state
 function BaseState:enter()
 end
 
@@ -15,12 +15,12 @@ end
 function BaseState:exit()
 end
 
----Update state
----@param dt number
+--- Update state
+--- @param dt number
 function BaseState:update(dt)
 end
 
----Draw state
+--- Draw state
 function BaseState:draw()
 end
 

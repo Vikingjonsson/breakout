@@ -7,7 +7,7 @@ local BRICK_WIDTH, BRICK_HEIGHT = 32, 16
 local QUADS = SpriteManager:generate_quads(SPRITE_SHEET, BRICK_WIDTH, BRICK_HEIGHT)
 local brick_quads = table.slice(QUADS, 1, 21)
 
----@class Brick
+--- @class Brick
 local Brick = Class {}
 
 function Brick:init(x, y)

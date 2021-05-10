@@ -5,7 +5,7 @@ M.signal = Signal.new()
 M.state = {}
 M.events = {FIRE = 'fire'}
 
----@param handler function
+--- @param handler function
 function M.on_fire(handler)
   M.signal:register(M.events.FIRE, handler)
 end

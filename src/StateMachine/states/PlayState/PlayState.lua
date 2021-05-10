@@ -8,12 +8,7 @@ local Brick = require 'src.GameObjects.Brick'
 local BaseState = require 'src.StateMachine.states.BaseState'
 local context = require 'src.StateMachine.states.PlayState.context'
 
-context.on_fire(
-  function()
-  end
-)
-
----@class PlayState
+--- @class PlayState
 local PlayState = Class {__includes = BaseState}
 
 function PlayState:init()
@@ -24,6 +19,12 @@ function PlayState:init()
   local initial_ball_x = self.paddle.x + self.paddle.w / 2 - self.ball.w / 2
   local initial_ball_y = self.paddle.y - self.ball.h * 2
   self.ball:set_position(initial_ball_x, initial_ball_y)
+
+  context.on_fire(
+    function()
+      self.ball.is_fired = true
+    end
+  )
 end
 
 --- @param state_machine StateMachine

@@ -1,10 +1,10 @@
 local Class = require 'lib.hump.class'
 local BaseState = require 'src.StateMachine.states.BaseState'
 
----@class HighScoreState
+--- @class HighScoreState
 local HighScoreState = Class {__includes = BaseState}
 
----HighScoreState state constructor
+--- HighScoreState state constructor
 function HighScoreState:init()
 end
 

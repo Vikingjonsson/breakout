@@ -9,13 +9,13 @@ local MAX_SPEED = 1000
 local SPRITE_SHEET = SpriteManager.images.breakout
 local quads = SpriteManager:generate_ball_quads(SPRITE_SHEET)
 
----@class Ball
+--- @class Ball
 local Ball = Class {}
 
 --- Ball constructor
----@param x number
----@param y number
----@param skin ?string optional defaults to 'blue'
+--- @param x number
+--- @param y number
+--- @param skin ?string optional defaults to 'blue'
 function Ball:init(x, y, skin)
   self.skin = quads[skin] and skin or 'blue'
   self.current_quad = quads[self.skin]
@@ -44,8 +44,8 @@ function Ball:set_position(x, y)
 end
 
 --- Reset ball to last set position
----@param x ?number
----@param y ?number
+--- @param x ?number
+--- @param y ?number
 function Ball:reset(x, y)
   self.is_fired = false
   self.dx = math.random(-200, 200)

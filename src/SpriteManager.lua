@@ -26,9 +26,9 @@ function SpriteManager:init()
 end
 
 --- Generate quads
----@param image table
----@param sprite_width number
----@param sprite_height number
+--- @param image table
+--- @param sprite_width number
+--- @param sprite_height number
 function SpriteManager:generate_quads(image, sprite_width, sprite_height)
   local quads = {}
   local rows = image:getWidth() / sprite_width
@@ -54,7 +54,7 @@ function SpriteManager:generate_ball_quads(image)
   local h, w = 8, 8
 
   -- first row
-  local x, y = 96, 4
+  local x, y = 96, 48
   for i = 1, 4, 1 do
     quads[COLORS[i]] = love.graphics.newQuad(x, y, w, h, image:getDimensions())
     x = x + w

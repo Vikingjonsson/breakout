@@ -8,10 +8,10 @@ local VOLUMES = {
 
 local SOUND_PATH = 'assets/sounds/'
 
----@class SoundManager
+--- @class SoundManager
 local SoundManager = Class {}
 
----State construtor
+--- State construtor
 function SoundManager:init()
   self.volume = VOLUMES.master
 
@@ -36,13 +36,13 @@ function SoundManager:init()
   }
 end
 
----Play sound
----@param sound any SoundManger.sounds or SoundManager.music
+--- Play sound
+--- @param sound any SoundManger.sounds or SoundManager.music
 function SoundManager:play_sound(sound)
   sound:setVolume(VOLUMES.master)
   love.audio.play(sound)
 end
 
----@type SoundManager
+--- @type SoundManager
 local instance = SoundManager()
 return instance

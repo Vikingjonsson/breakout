@@ -9,7 +9,7 @@ local SPRITE_SHEET = SpriteManager.images.breakout
 
 local quads = SpriteManager:generate_paddle_quads(SPRITE_SHEET)
 
----@class Paddle
+--- @class Paddle
 local Paddle = Class {}
 
 function Paddle:init()
@@ -31,10 +31,6 @@ local function calc_new_delta_positon(dt)
   else
     return 0
   end
-
-  if keyboard.was_key_pressed(keyboard.KEYS.RETURN) then
-    context.signal:emit(context.events.FIRE)
-  end
 end
 
 local function calc_new_position(x, dx, width)
@@ -46,6 +42,10 @@ end
 function Paddle:update(dt)
   self.dx = calc_new_delta_positon(dt)
   self.x = calc_new_position(self.x, self.dx, self.w)
+
+  if keyboard.was_key_pressed(keyboard.KEYS.RETURN) then
+    context.signal:emit(context.events.FIRE)
+  end
 end
 
 function Paddle:draw()

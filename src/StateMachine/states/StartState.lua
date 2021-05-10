@@ -7,7 +7,7 @@ local SoundManager = require 'src.SoundManager'
 
 local highlight = 1
 
----@class StartState
+--- @class StartState
 local StartState = Class {__includes = BaseState}
 
 function StartState:init(state_machine)

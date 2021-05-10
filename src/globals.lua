@@ -4,10 +4,10 @@ IS_PAUSED = false
 DEBUG = {}
 DEBUG.IS_DEBUGGING = false
 
----Prettier print values
----@param value string value to print
----@param tag ?string [optional] tag the log message
----@param indent ?number [optional] space to indent log defaults to 2
+--- Prettier print values
+--- @param value string value to print
+--- @param tag ?string [optional] tag the log message
+--- @param indent ?number [optional] space to indent log defaults to 2
 function DEBUG.dump(value, tag, indent)
   local function print_divider()
     print('---------------------')
