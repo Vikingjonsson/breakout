@@ -26,19 +26,24 @@ end
 local function calc_new_delta_positon(dt)
   if love.keyboard.isDown(keyboard.KEYS.LEFT) then
     return -SPEED * dt
-  elseif love.keyboard.isDown(keyboard.KEYS.RIGHT) then
-    return SPEED * dt
-  else
-    return 0
   end
+
+  if love.keyboard.isDown(keyboard.KEYS.RIGHT) then
+    return SPEED * dt
+  end
+
+  return 0
 end
 
 local function calc_new_position(x, dx, width)
   local MAX_POS_X = constants.VIRTUAL_WIDTH - width
   local new_positon = x + dx
+
   return dx < 0 and math.max(0, new_positon) or math.min(MAX_POS_X, new_positon)
 end
 
+--- Update Paddle
+--- @param dt number
 function Paddle:update(dt)
   self.dx = calc_new_delta_positon(dt)
   self.x = calc_new_position(self.x, self.dx, self.w)
@@ -50,6 +55,7 @@ end
 
 function Paddle:draw()
   love.graphics.draw(SPRITE_SHEET, self.current_quad, self.x, self.y)
+
   DEBUG.draw_hit_box(self)
 end
 

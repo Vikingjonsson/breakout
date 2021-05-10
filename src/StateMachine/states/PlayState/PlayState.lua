@@ -38,6 +38,7 @@ end
 function PlayState:update(dt)
   self.paddle:update(dt)
   self.ball:update(dt)
+
   if collision.check_collision_AABB(self.ball, self.paddle) then
     self.ball.dy = -self.ball.dy
     SoundManager:play_sound(SoundManager.sounds.paddle_hit)
