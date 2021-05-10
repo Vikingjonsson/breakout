@@ -3,8 +3,11 @@ Breakout, created with Löve2d.
 
 ## Game Controls
 Press **Left/Right** arrows to move.
+
 Press **Up/Down** arrows to select menu options.
+
 Press **Enter** to fire ball and select menu option.
+
 Press **P** to pause.
 
 
