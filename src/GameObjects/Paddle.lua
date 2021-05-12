@@ -1,13 +1,9 @@
 local Class = require 'lib.hump.class'
-local SpriteManager = require 'src.SpriteManager'
 local constants = require 'src.constants'
-local keyboard = require 'src.keyboard'
-local context = require 'src.StateMachine.states.PlayState.context'
 
 local SPEED = 200
-local SPRITE_SHEET = SpriteManager.images.breakout
-
-local quads = SpriteManager:generate_paddle_quads(SPRITE_SHEET)
+local SPRITE_SHEET = SPRITE_MANAGER.images.breakout
+local quads = SPRITE_MANAGER:generate_paddle_quads(SPRITE_SHEET)
 
 --- @class Paddle
 local Paddle = Class {}
@@ -24,11 +20,11 @@ function Paddle:init()
 end
 
 local function calc_new_delta_positon(dt)
-  if love.keyboard.isDown(keyboard.KEYS.LEFT) then
+  if love.keyboard.isDown(KEYBOARD.KEYS.LEFT) then
     return -SPEED * dt
   end
 
-  if love.keyboard.isDown(keyboard.KEYS.RIGHT) then
+  if love.keyboard.isDown(KEYBOARD.KEYS.RIGHT) then
     return SPEED * dt
   end
 
@@ -48,8 +44,8 @@ function Paddle:update(dt)
   self.dx = calc_new_delta_positon(dt)
   self.x = calc_new_position(self.x, self.dx, self.w)
 
-  if keyboard.was_key_pressed(keyboard.KEYS.RETURN) then
-    context.signal:emit(context.events.FIRE)
+  if KEYBOARD.was_key_pressed(KEYBOARD.KEYS.RETURN) then
+    GAME_STATE.signal:emit(GAME_STATE.EVENTS.FIRE)
   end
 end
 

@@ -1,13 +1,11 @@
 local Class = require 'lib.hump.class'
-local SpriteManager = require 'src.SpriteManager'
-local SoundManager = require 'src.SoundManager'
-local keyboard = require 'src.keyboard'
 local constants = require 'src.constants'
+local collision = require 'src.collision'
 
 local SPEED = 500
 local MAX_SPEED = 1000
-local SPRITE_SHEET = SpriteManager.images.breakout
-local quads = SpriteManager:generate_ball_quads(SPRITE_SHEET)
+local SPRITE_SHEET = SPRITE_MANAGER.images.breakout
+local quads = SPRITE_MANAGER:generate_ball_quads(SPRITE_SHEET)
 
 --- @class Ball
 local Ball = Class {}
@@ -58,6 +56,16 @@ function Ball:reset(x, y)
   end
 end
 
+--- @param other table<string, number> hit box, x,y,w,h
+
+--- @return boolean result true if collision else falses
+function Ball:has_collision(other)
+  return collision.check_collision_AABB(self, other)
+end
+
+function Ball:on_collision()
+end
+
 function Ball:update(dt)
   if self.is_fired then
     self.y = self.y + self.dy * dt
@@ -67,24 +75,24 @@ function Ball:update(dt)
   if self.x <= 0 then
     self.x = 0
     self.dx = -self.dx
-    SoundManager:play_sound(SoundManager.sounds.wall_hit)
+    SOUND_MANAGER:play_sound(SOUND_MANAGER.sounds.wall_hit)
   end
 
   if self.x >= constants.VIRTUAL_WIDTH - self.w then
     self.x = constants.VIRTUAL_WIDTH - self.w
     self.dx = -self.dx
-    SoundManager:play_sound(SoundManager.sounds.wall_hit)
+    SOUND_MANAGER:play_sound(SOUND_MANAGER.sounds.wall_hit)
   end
 
   if self.y <= 0 then
     self.y = 0
     self.dy = -self.dy
-    SoundManager:play_sound(SoundManager.sounds.wall_hit)
+    SOUND_MANAGER:play_sound(SOUND_MANAGER.sounds.wall_hit)
   end
 
   if self.y >= constants.VIRTUAL_HEIGHT then
     self:reset()
-    SoundManager:play_sound(SoundManager.sounds.hurt)
+    SOUND_MANAGER:play_sound(SOUND_MANAGER.sounds.hurt)
   end
 end
 

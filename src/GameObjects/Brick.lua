@@ -1,10 +1,8 @@
 local Class = require 'lib.hump.class'
-local SoundManager = require 'src.SoundManager'
-local SpriteManager = require 'src.SpriteManager'
 
-local SPRITE_SHEET = SpriteManager.images.breakout
+local SPRITE_SHEET = SPRITE_MANAGER.images.breakout
 local BRICK_WIDTH, BRICK_HEIGHT = 32, 16
-local QUADS = SpriteManager:generate_quads(SPRITE_SHEET, BRICK_WIDTH, BRICK_HEIGHT)
+local QUADS = SPRITE_MANAGER:generate_quads(SPRITE_SHEET, BRICK_WIDTH, BRICK_HEIGHT)
 local brick_quads = table.slice(QUADS, 1, 21)
 
 --- @class Brick
@@ -24,7 +22,7 @@ end
 
 function Brick:hit()
   local track = math.random(1, 2)
-  SoundManager:play_sound(SoundManager.sounds['brick_hit_' .. track])
+  SOUND_MANAGER:play_sound(SOUND_MANAGER.sounds['brick_hit_' .. track])
   self.is_active = false
 end
 
