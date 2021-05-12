@@ -39,8 +39,18 @@ end
 --- Play sound
 --- @param sound any SoundManger.sounds or SoundManager.music
 function SoundManager:play_sound(sound)
-  sound:setVolume(VOLUMES.master)
-  love.audio.play(sound)
+  if not IS_MUTED then
+    sound:setVolume(VOLUMES.master)
+    love.audio.play(sound)
+  end
+end
+
+--- Set looping
+--- @param sound any SoundManger.sounds or SoundManager.music
+function SoundManager:loop(sound)
+  if not sound.isLooping then
+    sound:set_looping(true)
+  end
 end
 
 --- @type SoundManager

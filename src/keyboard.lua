@@ -2,13 +2,18 @@
 ---
 --- @module simple
 local M = {}
-M.pressed_keys = {}
+
 M.KEYS = {
   ENTER = 'enter',
   RETURN = 'return',
   LEFT = 'left',
-  RIGHT = 'right'
+  RIGHT = 'right',
+  ESCAPE = 'escape',
+  UP = 'up',
+  DOWN = 'down'
 }
+
+M.pressed_keys = {}
 
 --- Add pressed key
 --- @param key string
