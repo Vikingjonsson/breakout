@@ -1,21 +1,19 @@
 local Class = require 'lib.hump.class'
-
 local text = require 'src.text'
 local constants = require 'src.constants'
 local BaseState = require 'src.states.BaseState'
 
-local was_key_pressed = KEYBOARD.was_key_pressed
 local highlight = 1
 
 local function handle_input()
   if
-    was_key_pressed(KEYBOARD.KEYS.ESCAPE) and
+    KEYBOARD.was_key_pressed(KEYBOARD.KEYS.ESCAPE) and
       GAME_STATE.machine:get_current_state() == GAME_STATE.STATES.START
    then
     love.event.quit(1)
   end
 
-  if was_key_pressed(KEYBOARD.KEYS.UP) or was_key_pressed(KEYBOARD.KEYS.DOWN) then
+  if KEYBOARD.was_key_pressed(KEYBOARD.KEYS.UP) or KEYBOARD.was_key_pressed(KEYBOARD.KEYS.DOWN) then
     SOUND_MANAGER:play_sound(SOUND_MANAGER.sounds.select)
     highlight = highlight == 1 and 2 or 1
   end

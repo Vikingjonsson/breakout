@@ -1,4 +1,4 @@
-IS_MUTED = true
+IS_MUTED = false
 IS_PAUSED = false
 
 DEBUG = {}

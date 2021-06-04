@@ -10,6 +10,10 @@ function table.slice(tbl, first, last)
   return sliced
 end
 
+function math.clamp(min, val, max)
+  return math.max(min, math.min(val, max))
+end
+
 ---@param s string
 ---@return string
 function string.trim(s)
@@ -28,6 +32,8 @@ function string.split(str, sep)
   return t
 end
 
+---@diagnostic disable: lowercase-global
+
 function is_string(val)
   return type(val) == 'string'
 end
@@ -43,3 +49,5 @@ end
 function is_boolean(val)
   return type(val) == 'boolean'
 end
+
+---@diagnostic enable: lowercase-global

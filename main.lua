@@ -87,5 +87,6 @@ function love.draw()
   GAME_STATE.machine:draw()
   push:finish()
 
+  -- DEBUG
   DEBUG.display_fps()
 end
