@@ -3,7 +3,7 @@ local Class = require 'lib.hump.class'
 --- @class BaseState
 local BaseState = Class {}
 
---- State construtor
+--- State constructor
 function BaseState:init()
 end
 

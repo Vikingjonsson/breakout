@@ -6,9 +6,13 @@ local Paddle = require 'src.GameObjects.Paddle'
 local Ball = require 'src.GameObjects.Ball'
 local Brick = require 'src.GameObjects.Brick'
 
---- @class PlayState
+--- @class PlayState : BaseState
+--- @field paddle Paddle
+--- @field ball Ball
+--- @field brick Brick
 local PlayState = Class {__includes = BaseState}
 
+--- @param self PlayState
 function PlayState:init()
   self.paddle = Paddle() --- @type Paddle
   self.ball = Ball(0, 0) --- @type Ball
@@ -24,13 +28,17 @@ function PlayState:init()
     end
   )
 end
-
+--- @param self PlayState
 function PlayState:enter()
 end
 
+--- @param self PlayState
 function PlayState:exit()
 end
 
+
+--- @param self PlayState
+--- @param dt number
 function PlayState:update(dt)
   if keyboard.was_key_pressed(KEYBOARD.KEYS.ESCAPE) then
     GAME_STATE.machine:change(GAME_STATE.STATES.START)
@@ -58,6 +66,7 @@ function PlayState:update(dt)
   end
 end
 
+--- @param self PlayState
 function PlayState:draw()
   self.paddle:draw()
   self.ball:draw()

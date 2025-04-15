@@ -6,8 +6,15 @@ local QUADS = SPRITE_MANAGER:generate_quads(SPRITE_SHEET, BRICK_WIDTH, BRICK_HEI
 local brick_quads = table.slice(QUADS, 1, 21)
 
 --- @class Brick
+--- @field x number
+--- @field y number
+--- @field w number
+--- @field h number
 local Brick = Class {}
 
+
+--- @param x number
+--- @param y number
 function Brick:init(x, y)
   self.current_quad = brick_quads[1]
   local _, _, quad_width, quad_height = self.current_quad:getViewport()
@@ -20,6 +27,7 @@ function Brick:init(x, y)
   self.is_active = true
 end
 
+--- @return nil 
 function Brick:hit()
   local track = math.random(1, 2)
   SOUND_MANAGER:play_sound(SOUND_MANAGER.sounds['brick_hit_' .. track])
@@ -36,6 +44,7 @@ end
 
 function Brick:update(dt)
 end
+
 
 function Brick:draw()
   if self.is_active then

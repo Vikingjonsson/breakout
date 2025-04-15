@@ -11,7 +11,7 @@ local SOUND_PATH = 'assets/sounds/'
 --- @class SoundManager
 local SoundManager = Class {}
 
---- State construtor
+--- State constructor
 function SoundManager:init()
   self.volume = VOLUMES.master
 
